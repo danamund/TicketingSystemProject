@@ -5,7 +5,12 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Submitted by:
+Dana Mund, ID-319126074
+Loren Kricheli ID-322632183
 
+*/
 public class DaoFileImpl implements IDao{
 
     String filePath;
