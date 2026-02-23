@@ -14,5 +14,15 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="junit" level="project" />
     <orderEntry type="library" exported="" name="AlgorithmProject" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/TicketBookingSystem/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/TicketBookingSystem/lib" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>

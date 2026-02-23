@@ -7,27 +7,7 @@
     <list default="true" id="0018b1dc-52a2-404d-9e9b-fcd64e6755d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/AlgorithmProject.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/AlgorithmProject.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicketBookingSystem/lib/AlgorithmProject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TicketBookingSystem/libs/AlgorithmProject.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicketBookingSystem/src/main/java/com/hit/service/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/AlgorithmProject.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/.idea/artifacts/AlgorithmProject_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/AlgorithmProject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/com/hit/algorithm/IAlgoStringMatching.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/com/hit/algorithm/IAlgoStringMatchingTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/com/hit/algorithm/LcsDynamicAlgoImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/com/hit/algorithm/LcsRecursiveAlgoImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/com/hit/dao/DaoFileImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/com/hit/dao/IDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/com/hit/dm/Ticket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/com/hit/service/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ticketing-System/com/hit/service/TicketService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Ticketing-System/com/hit/algorithm/IAlgoStringMatchingTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Ticketing-System/com/hit/service/TicketServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ticketing-System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing-System.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,18 +17,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "lorenkr"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;lorenkr&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/danamund/TicketingSystemProject.git",
-    "accountId": "8c507634-a573-4bd2-ac4a-5cdd75e3972a"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/danamund/TicketingSystemProject.git&quot;,
+    &quot;accountId&quot;: &quot;8c507634-a573-4bd2-ac4a-5cdd75e3972a&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -74,7 +54,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/danam/IdeaProjects/TicketingSystemProject",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
