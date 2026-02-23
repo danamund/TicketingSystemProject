@@ -8,6 +8,10 @@ public class Ticket implements java.io.Serializable{
     private String customerName;
     private double price;
 
+
+    public Ticket() {
+    }
+
     public Ticket(long id,String eventName,String customerName,double price)
     {
         this.id=id;

@@ -5,7 +5,6 @@ import org.junit.Test;
 
 public class IAlgoStringMatchingTest {
 
-    // --- בדיקות לאלגוריתם הדינאמי ---
 
     @Test
     public void testDynamicAlgoBasic() {
@@ -26,7 +25,6 @@ public class IAlgoStringMatchingTest {
         Assert.assertEquals(0, dynamicAlgo.getCommonLength("abc", "xyz"));
     }
 
-    // --- בדיקות לאלגוריתם הרקורסיבי ---
 
     @Test
     public void testRecursiveAlgoEmpty() {
@@ -43,7 +41,6 @@ public class IAlgoStringMatchingTest {
     @Test
     public void testRecursiveAlgoLongStrings() {
         IAlgoStringMatching recursiveAlgo = new LcsRecursiveAlgoImpl();
-        // בדיקה של מחרוזות קצת יותר ארוכות עם אותיות מפוזרות
-        Assert.assertEquals(2, recursiveAlgo.getCommonLength("aggtab", "gxtxayb"));
+        Assert.assertEquals(4, recursiveAlgo.getCommonLength("aggtab", "gxtxayb"));
     }
 }

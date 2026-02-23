@@ -14,7 +14,7 @@ public class TicketServiceTest {
     public void testSearchTicketSuccess() {
         IDao dao = new DaoFileImpl("TicketBookingSystem/src/main/resources/datasource.txt");
 
-        // תיקון: יצירת אלגוריתם והעברתו ל-Service
+
         IAlgoStringMatching algo = new LcsDynamicAlgoImpl();
         TicketService service = new TicketService(dao, algo);
 
@@ -31,7 +31,7 @@ public class TicketServiceTest {
     public void testSearchTicketNoMatch() {
         IDao dao = new DaoFileImpl("test_tickets.dat");
 
-        // תיקון: גם כאן צריך להעביר אלגוריתם
+
         IAlgoStringMatching algo = new LcsDynamicAlgoImpl();
         TicketService service = new TicketService(dao, algo);
 
