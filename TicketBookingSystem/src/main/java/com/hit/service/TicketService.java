@@ -1,16 +1,18 @@
 package com.hit.service;
 
 import com.hit.algorithm.IAlgoStringMatching;
-import com.hit.algorithm.LcsDynamicAlgoImpl;
 import com.hit.dm.Ticket;
 import com.hit.dao.IDao;
 import java.util.List;
 
 public class TicketService {
     private IDao<Ticket> dao;
+    private IAlgoStringMatching algo; // 1. הוספת משתנה לאלגוריתם (Strategy)
 
-    public TicketService(IDao<Ticket> dao) {
+    // 2. עדכון הקונסטרקטור שיקבל גם את האלגוריתם מבחוץ
+    public TicketService(IDao<Ticket> dao, IAlgoStringMatching algo) {
         this.dao = dao;
+        this.algo = algo;
     }
 
     public void addTicket(Ticket ticket) {
@@ -30,8 +32,7 @@ public class TicketService {
         Ticket bestMatch = null;
         int maxScore = 0;
 
-        IAlgoStringMatching algo = new LcsDynamicAlgoImpl();
-
+        // 3. שימוש באלגוריתם שהתקבל מבחוץ (בלי new בתוך הפונקציה!)
         for (Ticket t : allTickets) {
             int score = algo.getCommonLength(query, t.getEventName());
 

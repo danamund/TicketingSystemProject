@@ -1,9 +1,10 @@
 package com.hit.service;
 
+import com.hit.algorithm.IAlgoStringMatching; // הוספנו
+import com.hit.algorithm.LcsDynamicAlgoImpl; // הוספנו
 import com.hit.dao.DaoFileImpl;
 import com.hit.dao.IDao;
 import com.hit.dm.Ticket;
-import com.hit.service.TicketService;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,9 +12,13 @@ public class TicketServiceTest {
 
     @Test
     public void testSearchTicketSuccess() {
+        IDao dao = new DaoFileImpl("TicketBookingSystem/src/main/resources/datasource.txt");
 
-        IDao dao = new DaoFileImpl("TicketBookingSystem/src/main/resources/datasource.txt");        TicketService service = new TicketService(dao);
-        Ticket t1 = new Ticket(1, "The Lion King", "Dana",150.0);
+        // תיקון: יצירת אלגוריתם והעברתו ל-Service
+        IAlgoStringMatching algo = new LcsDynamicAlgoImpl();
+        TicketService service = new TicketService(dao, algo);
+
+        Ticket t1 = new Ticket(1, "The Lion King", "Dana", 150.0);
         service.addTicket(t1);
 
         Ticket result = service.searchTicket("Lion");
@@ -24,8 +29,11 @@ public class TicketServiceTest {
 
     @Test
     public void testSearchTicketNoMatch() {
-        DaoFileImpl dao = new DaoFileImpl("test_tickets.dat");
-        TicketService service = new TicketService(dao);
+        IDao dao = new DaoFileImpl("test_tickets.dat");
+
+        // תיקון: גם כאן צריך להעביר אלגוריתם
+        IAlgoStringMatching algo = new LcsDynamicAlgoImpl();
+        TicketService service = new TicketService(dao, algo);
 
         Ticket result = service.searchTicket("wwww");
 
