@@ -1,3 +1,7 @@
 .idea/workspace.xml
 .idea/libraries/
 *.class
+.idea/
+*.iml
+out/
+gen/
