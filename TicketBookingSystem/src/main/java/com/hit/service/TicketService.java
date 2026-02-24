@@ -14,13 +14,32 @@ public class TicketService {
         this.dao = dao;
         this.algo = algo;
     }
+    public Ticket getTicketByName(String name) {
+        List<Ticket> allTickets = dao.getAll();
 
+        // ניקוי הקלט: הופכים לאותיות קטנות ומסירים רווחים
+        String searchName = name.toLowerCase().replaceAll("\\s+", "");
+
+        for (Ticket t : allTickets) {
+            // ניקוי שם הסרט מהקובץ באותה צורה
+            String ticketName = t.getEventName().toLowerCase().replaceAll("\\s+", "");
+
+            // עכשיו האלגוריתם ימצא התאמה מושלמת!
+            int lcsLength = algo.getCommonLength(ticketName, searchName);
+            double similarity = (double) lcsLength / Math.max(ticketName.length(), searchName.length());
+
+            if (similarity > 0.5) {
+                return t; // מחזיר את האובייקט המקורי עם השם הנכון לתמונה (למשל IronMan)
+            }
+        }
+        return null;
+    }
     public void addTicket(Ticket ticket) {
         dao.save(ticket);
     }
 
     public List<Ticket> getAll() {
-        return dao.getTickets();
+        return dao.getAll();
     }
 
     public void deleteTicket(Ticket t) {
@@ -28,7 +47,7 @@ public class TicketService {
     }
 
     public Ticket searchTicket(String query) {
-        List<Ticket> allTickets = dao.getTickets();
+        List<Ticket> allTickets = dao.getAll();
         Ticket bestMatch = null;
         int maxScore = 0;
 

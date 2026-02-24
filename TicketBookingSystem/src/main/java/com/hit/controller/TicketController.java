@@ -11,6 +11,10 @@ public class TicketController {
         this.ticketService = ticketService;
     }
 
+    public Ticket getTicket(String name) {
+        // קורא ל-Service שמשתמש באלגוריתם ה-LCS שמימשת
+        return ticketService.getTicketByName(name);
+    }
 
     public Ticket searchTicket(String query) {
         return ticketService.searchTicket(query);

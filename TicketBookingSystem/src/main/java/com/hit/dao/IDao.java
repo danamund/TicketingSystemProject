@@ -1,14 +1,9 @@
 package com.hit.dao;
-
-import com.hit.dm.Ticket;
 import java.util.List;
 
 public interface IDao<T> {
-
-    boolean save(Ticket t);
-
-    boolean delete(Ticket t);
-
-    List<Ticket> getTickets();
+    void saveAll(List<T> entities);
+    List<T> getAll();
+    boolean save(T entity);   // הוספנו כדי שה-Service יזהה
+    boolean delete(T entity); // הוספנו כדי שה-Service יזהה
 }
-
