@@ -7,6 +7,7 @@ public class Ticket implements java.io.Serializable{
     private String eventName;
     private String customerName;
     private double price;
+    private String summary;
 
 
     public Ticket() {
@@ -26,6 +27,13 @@ public class Ticket implements java.io.Serializable{
 
     public String getEventName() {
         return eventName;
+    }
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
     public String getCustomerName() {
@@ -70,6 +78,7 @@ public class Ticket implements java.io.Serializable{
                 "id=" + id +
                 ", Event Name='" + eventName + '\'' +
                 ", Customer Name='" + customerName + '\'' +
+                ", Summary='" +summary + '\'' +
                 ", Price=" + price +
                 '}';
     }

@@ -48,13 +48,13 @@ public class TicketService {
 
     public Ticket searchTicket(String query) {
         List<Ticket> allTickets = dao.getAll();
+        System.out.println("Total movies loaded from DB: " + allTickets.size());
         Ticket bestMatch = null;
-        int maxScore = 0;
-
+        int maxScore = -1;
 
         for (Ticket t : allTickets) {
-            int score = algo.getCommonLength(query, t.getEventName());
-
+            // המרה ל-lowercase כדי להתעלם מהבדלי אותיות גדולות/קטנות
+            int score = algo.getCommonLength(query.toLowerCase(), t.getEventName().toLowerCase());
             if (score > maxScore) {
                 maxScore = score;
                 bestMatch = t;

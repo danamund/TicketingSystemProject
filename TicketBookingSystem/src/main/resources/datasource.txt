@@ -2,31 +2,55 @@
   {
     "id": 1,
     "eventName": "Titanic",
-    "summary": "A romance on the ill-fated ship.",
-    "price": 45.0
+    "price": 45.0,
+    "summary": "A love story aboard the ill-fated ship. Romance, drama, and fate collide."
   },
   {
     "id": 2,
     "eventName": "IronMan",
-    "summary": "Billionaire Tony Stark builds a high-tech suit.",
-    "price": 55.0
+    "price": 55.0,
+    "summary": "A billionaire genius becomes a hero. After building a high-tech suit of armor, Tony Stark vows to protect the world as the ultimate defender."
   },
   {
     "id": 3,
     "eventName": "ToyStory",
-    "summary": "A world where toys come to life.",
-    "price": 40.0
+    "price": 40.0,
+    "summary": "When humans leave the room, the magic begins. A heartwarming adventure about friendship between a cowboy doll and a space ranger."
   },
   {
     "id": 4,
     "eventName": "CinderellaStory",
-    "summary": "A modern twist on a classic fairy tale.",
-    "price": 35.0
+    "price": 35.0,
+    "summary": "A modern fairy tale of a cell phone, a secret identity, and a chance for true love. Can a high school girl find her prince in the digital age?"
   },
   {
     "id": 5,
     "eventName": "ThePrincessDiaries",
-    "summary": "A teenager discovers she's a princess.",
-    "price": 38.0
+    "price": 38.0,
+    "summary": "From a shy, invisible teenager to the crown princess of Genovia. One makeover changed her life, but will she choose the crown or herself?"
+  },
+  {
+    "id": 0,
+    "eventName": "The Lion King",
+    "price": 30.0,
+    "summary": "A young lion prince flees his home after a tragedy, only to return years later to reclaim his throne and restore balance to the kingdom. With his friends by his side, he must find the courage to face his past and become the true King"
+  },
+  {
+    "id": 0,
+    "eventName": "Captain America",
+    "price": 35.0,
+    "summary": "During World War II, a brave, patriotic American Soldier undergoes experiments to become a new supersoldier, \"Captain America\". Racing to Germany to sabotage the rockets of Nazi baddie \"Red Skull\", Captain America winds up frozen until the 1990s. He reawakens to find that the Red Skull has changed identities and is now planning to kidnap the President of the United States."
+  },
+  {
+    "id": 0,
+    "eventName": "Captian America",
+    "price": 35.0,
+    "summary": "During World War II, a brave, patriotic American Soldier undergoes experiments to become a new supersoldier, \"Captain America\". Racing to Germany to sabotage the rockets of Nazi baddie \"Red Skull\", Captain America winds up frozen until the 1990s. He reawakens to find that the Red Skull has changed identities and is now planning to kidnap the President of the United States."
+  },
+  {
+    "id": 0,
+    "eventName": "Spiderman",
+    "price": 20.0,
+    "summary": "After being bitten by a genetically altered spider at Oscorp, nerdy but endearing high school student Peter Parker is endowed with amazing powers to become the superhero known as Spider-Man."
   }
 ]

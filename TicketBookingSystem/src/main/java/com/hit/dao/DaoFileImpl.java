@@ -31,10 +31,13 @@ public class DaoFileImpl<T> implements IDao<T> {
         try (Reader reader = new FileReader(filePath)) {
             Type listType = TypeToken.getParameterized(List.class, type).getType();
             List<T> result = gson.fromJson(reader, listType);
+            System.out.println("DAO loaded " + (result != null ? result.size() : 0) + " items."); // הדפסת בקרה
             return result != null ? result : new ArrayList<>();
-        } catch (IOException e) { return new ArrayList<>(); }
+        } catch (IOException e) {
+            System.err.println("CRITICAL: Could not find or read file at: " + filePath);
+            return new ArrayList<>();
+        }
     }
-
     @Override
     public boolean save(T entity) {
         List<T> all = getAll();

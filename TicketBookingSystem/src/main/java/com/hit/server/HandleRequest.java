@@ -5,15 +5,17 @@ import com.google.gson.reflect.TypeToken;
 import com.hit.controller.ControllerFactory;
 import com.hit.controller.TicketController;
 import com.hit.dm.Ticket;
-import com.hit.server.Request;
-import com.hit.server.Response;
+
 import java.io.*;
 import java.net.Socket;
-import java.util.Scanner;
+import java.util.*;
 
 public class HandleRequest implements Runnable {
-    private Socket socket;
-    private ControllerFactory factory;
+    private final Socket socket;
+    private final ControllerFactory factory;
+
+    // זיכרון זמני למושבים תפוסים לפי הקרנה (movie|date|time)
+    private static final Map<String, Set<String>> takenSeatsByShow = new HashMap<>();
 
     public HandleRequest(Socket socket, ControllerFactory factory) {
         this.socket = socket;
@@ -25,31 +27,107 @@ public class HandleRequest implements Runnable {
         try (Scanner reader = new Scanner(new InputStreamReader(socket.getInputStream()));
              PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()))) {
 
-            if (reader.hasNextLine()) {
-                String jsonRequest = reader.nextLine();
-                // הפיכת ה-JSON לאובייקט בקשה
-                TypeToken<Request<Ticket>> typeToken = new TypeToken<Request<Ticket>>(){};
-                Request<Ticket> request = new Gson().fromJson(jsonRequest, typeToken.getType());
+            if (!reader.hasNextLine()) return;
 
-                String action = request.getHeaders().get("action");
-                // קבלת הקונטרולר מה-Factory
+            String jsonRequest = reader.nextLine();
+
+            TypeToken<Request<Ticket>> typeToken = new TypeToken<Request<Ticket>>() {};
+            Request<Ticket> request = new Gson().fromJson(jsonRequest, typeToken.getType());
+
+            String action = request.getHeaders().get("action");
+
+            Response<Ticket> response;
+
+            if ("search".equals(action)) {
+
                 TicketController controller = (TicketController) factory.getController("ticket");
 
-                Response<Ticket> response;
-                if ("search".equals(action)) {
-                    // ביצוע החיפוש בשרת
-                    Ticket result = controller.getTicket(request.getBody().getEventName());
+                String movieToSearch = request.getBody().getEventName();
+                System.out.println("Client is searching for: " + movieToSearch);
+
+                Ticket result = controller.searchTicket(movieToSearch);
+
+                if (result != null) {
+                    System.out.println("Server found matching movie: " + result.getEventName());
                     response = new Response<>("success", result);
                 } else {
-                    response = new Response<>("error", null);
+                    System.out.println("No match found in database for: " + movieToSearch);
+                    response = new Response<>("success", null);
                 }
 
-                // שליחת התשובה בחזרה ללקוח - זה החלק הכי חשוב!
-                writer.println(new Gson().toJson(response));
-                writer.flush();
+            } else if ("getTakenSeats".equals(action)) {
+
+                String movie = request.getHeaders().get("movie");
+                String date = request.getHeaders().get("date");
+                String time = request.getHeaders().get("time");
+
+                String key = movie + "|" + date + "|" + time;
+
+                Set<String> taken = takenSeatsByShow.getOrDefault(key, new HashSet<>());
+                String seatsCsv = String.join(",", taken);
+
+                response = new Response<>("success", null);
+                response.getHeaders().put("seats", seatsCsv);
+
+            } else if ("bookSeats".equals(action)) {
+
+                String movie = request.getHeaders().get("movie");
+                String date = request.getHeaders().get("date");
+                String time = request.getHeaders().get("time");
+                String seatsCsv = request.getHeaders().get("seats");
+
+                String key = movie + "|" + date + "|" + time;
+
+                Set<String> taken = takenSeatsByShow.computeIfAbsent(key, k -> new HashSet<>());
+
+                List<String> seatsToBook = Arrays.asList(seatsCsv.split(","));
+
+                for (String seat : seatsToBook) {
+                    if (taken.contains(seat)) {
+                        response = new Response<>("error", null);
+                        writer.println(new Gson().toJson(response));
+                        writer.flush();
+                        return;
+                    }
+                }
+
+                taken.addAll(seatsToBook);
+                response = new Response<>("success", null);
+
+            }else if ("addMovie".equals(action)) {
+
+                Ticket newMovie = request.getBody();
+                if (newMovie == null || newMovie.getEventName() == null || newMovie.getEventName().isBlank()) {
+                    response = new Response<>("error", null);
+                } else {
+                    // פה את מכניסה למאגר של השרת
+                    // תלוי איך controller.searchTicket עובד אצלך.
+                    // הכי קל: להוסיף מתודה controller.addTicket(newMovie)
+
+                    TicketController controller = (TicketController) factory.getController("ticket");
+                    controller.addTicket(newMovie);
+
+                    response = new Response<>("success", null);
+                }
             }
+
+            else {
+                response = new Response<>("error", null);
+            }
+
+            // שליחת תשובה ללקוח
+            writer.println(new Gson().toJson(response));
+            writer.flush();
+
         } catch (IOException e) {
+            System.err.println("HandleRequest error: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            try {
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

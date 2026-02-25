@@ -11,14 +11,11 @@ public class ControllerFactory {
     private Map<String, Object> controllers = new HashMap<>();
 
     public ControllerFactory() {
-        // תיקון 1: הוספת Ticket.class והגדרת סוג גנרי <Ticket>
-        DaoFileImpl<Ticket> dao = new DaoFileImpl<>("src/main/resources/datasource.txt", Ticket.class);
 
-        // יצירת ה-Service עם ה-DAO והאלגוריתם
+        String path = "C:/Users/danam/Documents/GitHub/TicketingSystemProject/TicketBookingSystem/src/main/resources/datasource.txt";        DaoFileImpl<Ticket> dao = new DaoFileImpl<>(path, Ticket.class);
         TicketService ticketService = new TicketService(dao, new LcsDynamicAlgoImpl());
-
-        // תיקון 2: ודאי שיש לך TicketController בשרת שמקבל Service
         controllers.put("ticket", new TicketController(ticketService));
+
     }
 
     public Object getController(String type) {
