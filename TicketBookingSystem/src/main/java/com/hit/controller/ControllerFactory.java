@@ -12,7 +12,8 @@ public class ControllerFactory {
 
     public ControllerFactory() {
 
-        String path = "C:/Users/danam/Documents/GitHub/TicketingSystemProject/TicketBookingSystem/src/main/resources/datasource.txt";        DaoFileImpl<Ticket> dao = new DaoFileImpl<>(path, Ticket.class);
+        String path = "src/main/resources/datasource.txt";
+        DaoFileImpl<Ticket> dao = new DaoFileImpl<>(path, Ticket.class);
         TicketService ticketService = new TicketService(dao, new LcsDynamicAlgoImpl());
         controllers.put("ticket", new TicketController(ticketService));
 

@@ -55,6 +55,7 @@ public class HandleRequest implements Runnable {
                     response = new Response<>("success", null);
                 }
 
+
             } else if ("getTakenSeats".equals(action)) {
 
                 String movie = request.getHeaders().get("movie");
@@ -108,6 +109,43 @@ public class HandleRequest implements Runnable {
                     controller.addTicket(newMovie);
 
                     response = new Response<>("success", null);
+                }
+            }
+            // הוספת טיפול בבקשה לקבלת כל הסרטים
+            else if ("getAllMovies".equals(action)) {
+                TicketController controller = (TicketController) factory.getController("ticket");
+
+                // קריאה למתודה שתחזיר את כל הרשימה מה-Service
+                List<Ticket> allMovies = controller.getAllMovies();
+
+                // יצירת תשובה מסוג רשימה
+                Response<List<Ticket>> listResponse = new Response<>("success", allMovies);
+
+                // שליחה ללקוח כ-JSON
+                writer.println(new Gson().toJson(listResponse));
+                writer.flush();
+                return; // חשוב לעצור כאן כדי שלא יגיע ל-else למטה
+            }
+
+
+
+            else if ("deleteMovie".equals(action)) {
+                Ticket movieToDelete = request.getBody();
+                if (movieToDelete != null && movieToDelete.getEventName() != null) {
+                    TicketController controller = (TicketController) factory.getController("ticket");
+
+                    // שלב א': נמצא את הסרט המלא במאגר לפי השם
+                    Ticket fullTicket = controller.getTicket(movieToDelete.getEventName());
+
+                    if (fullTicket != null) {
+                        // שלב ב': נמחק את האובייקט שנמצא
+                        controller.deleteTicket(fullTicket);
+                        response = new Response<>("success", null);
+                    } else {
+                        response = new Response<>("error", null); // הסרט לא נמצא
+                    }
+                } else {
+                    response = new Response<>("error", null);
                 }
             }
 

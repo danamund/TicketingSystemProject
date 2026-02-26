@@ -3,6 +3,8 @@ package com.hit.controller;
 import com.hit.dm.Ticket;
 import com.hit.service.TicketService;
 
+import java.util.List;
+
 public class TicketController {
     private TicketService ticketService;
 
@@ -28,7 +30,12 @@ public class TicketController {
         ticketService.addTicket(t);
     }
 
+;
 
+    // בתוך TicketController.java שבחבילת com.hit.controller (בשרת)
+    public List<Ticket> getAllMovies() {
+        return ticketService.getAll();
+    }
     public void saveTicket(Ticket ticket) {
         ticketService.addTicket(ticket);
     }

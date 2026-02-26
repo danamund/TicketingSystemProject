@@ -37,12 +37,6 @@
   },
   {
     "id": 0,
-    "eventName": "Captain America",
-    "price": 35.0,
-    "summary": "During World War II, a brave, patriotic American Soldier undergoes experiments to become a new supersoldier, \"Captain America\". Racing to Germany to sabotage the rockets of Nazi baddie \"Red Skull\", Captain America winds up frozen until the 1990s. He reawakens to find that the Red Skull has changed identities and is now planning to kidnap the President of the United States."
-  },
-  {
-    "id": 0,
     "eventName": "Captian America",
     "price": 35.0,
     "summary": "During World War II, a brave, patriotic American Soldier undergoes experiments to become a new supersoldier, \"Captain America\". Racing to Germany to sabotage the rockets of Nazi baddie \"Red Skull\", Captain America winds up frozen until the 1990s. He reawakens to find that the Red Skull has changed identities and is now planning to kidnap the President of the United States."
@@ -58,5 +52,17 @@
     "eventName": "The Matrix",
     "price": 20.0,
     "summary": "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth."
+  },
+  {
+    "id": 0,
+    "eventName": "Supercalifragilisticexpialidocious",
+    "price": 50.0,
+    "summary": "is a song and single from the 1964 Disney musical film Mary Poppins"
+  },
+  {
+    "id": 0,
+    "eventName": "Scream 7",
+    "price": 50.0,
+    "summary": "When a new Ghostface killer emerges in the town where Sidney Prescott has built a new life, her darkest fears are realized as her daughter becomes the next target."
   }
 ]
