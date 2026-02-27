@@ -1,7 +1,7 @@
 package com.hit.service;
 
-import com.hit.algorithm.IAlgoStringMatching; // הוספנו
-import com.hit.algorithm.LcsDynamicAlgoImpl; // הוספנו
+import com.hit.algorithm.IAlgoStringMatching;
+import com.hit.algorithm.LcsDynamicAlgoImpl;
 import com.hit.dao.DaoFileImpl;
 import com.hit.dao.IDao;
 import com.hit.dm.Ticket;

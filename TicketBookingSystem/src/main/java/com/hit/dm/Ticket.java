@@ -9,6 +9,13 @@ public class Ticket implements java.io.Serializable{
     private double price;
     private String summary;
 
+    /*
+Submitted by:
+Dana Mund, ID-319126074
+Loren Kricheli ID-322632183
+
+*/
+
 
     public Ticket() {
     }

@@ -5,6 +5,13 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/*
+Submitted by:
+Dana Mund, ID-319126074
+Loren Kricheli ID-322632183
+
+*/
+
 public class Server implements Runnable {
     private int port;
     private ServerSocket server;
@@ -18,7 +25,7 @@ public class Server implements Runnable {
     @Override
     public void run() {
         try {
-            // יצירת ה-Factory פעם אחת בלבד עבור כל השרת
+
             ControllerFactory controllerFactory = new ControllerFactory();
 
             server = new ServerSocket(port);
@@ -28,10 +35,10 @@ public class Server implements Runnable {
                 Socket clientSocket = server.accept();
                 System.out.println("New client connected!");
 
-                // תיקון: שולחים את ה-Factory ל-HandleRequest
+
                 HandleRequest handleRequest = new HandleRequest(clientSocket, controllerFactory);
 
-                // הפעלת ה-Thread עבור הלקוח הספציפי
+
                 new Thread(handleRequest).start();
             }
         } catch (IOException e) {

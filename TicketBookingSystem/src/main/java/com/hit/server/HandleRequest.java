@@ -10,11 +10,18 @@ import java.io.*;
 import java.net.Socket;
 import java.util.*;
 
+/*
+Submitted by:
+Dana Mund, ID-319126074
+Loren Kricheli ID-322632183
+
+*/
+
 public class HandleRequest implements Runnable {
     private final Socket socket;
     private final ControllerFactory factory;
 
-    // זיכרון זמני למושבים תפוסים לפי הקרנה (movie|date|time)
+
     private static final Map<String, Set<String>> takenSeatsByShow = new HashMap<>();
 
     public HandleRequest(Socket socket, ControllerFactory factory) {
@@ -101,9 +108,7 @@ public class HandleRequest implements Runnable {
                 if (newMovie == null || newMovie.getEventName() == null || newMovie.getEventName().isBlank()) {
                     response = new Response<>("error", null);
                 } else {
-                    // פה את מכניסה למאגר של השרת
-                    // תלוי איך controller.searchTicket עובד אצלך.
-                    // הכי קל: להוסיף מתודה controller.addTicket(newMovie)
+
 
                     TicketController controller = (TicketController) factory.getController("ticket");
                     controller.addTicket(newMovie);
@@ -111,20 +116,20 @@ public class HandleRequest implements Runnable {
                     response = new Response<>("success", null);
                 }
             }
-            // הוספת טיפול בבקשה לקבלת כל הסרטים
+
             else if ("getAllMovies".equals(action)) {
                 TicketController controller = (TicketController) factory.getController("ticket");
 
-                // קריאה למתודה שתחזיר את כל הרשימה מה-Service
+
                 List<Ticket> allMovies = controller.getAllMovies();
 
-                // יצירת תשובה מסוג רשימה
+
                 Response<List<Ticket>> listResponse = new Response<>("success", allMovies);
 
-                // שליחה ללקוח כ-JSON
+
                 writer.println(new Gson().toJson(listResponse));
                 writer.flush();
-                return; // חשוב לעצור כאן כדי שלא יגיע ל-else למטה
+                return;
             }
 
 

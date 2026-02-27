@@ -8,6 +8,13 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Submitted by:
+Dana Mund, ID-319126074
+Loren Kricheli ID-322632183
+
+*/
+
 public class DaoFileImpl<T> implements IDao<T> {
     private String filePath;
     private Gson gson;
@@ -16,6 +23,11 @@ public class DaoFileImpl<T> implements IDao<T> {
     public DaoFileImpl(String filePath, Class<T> type) {
         this.filePath = filePath;
         this.type = type;
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
+    }
+
+    public DaoFileImpl(String filePath) {
+        this.filePath = filePath;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
@@ -31,7 +43,7 @@ public class DaoFileImpl<T> implements IDao<T> {
         try (Reader reader = new FileReader(filePath)) {
             Type listType = TypeToken.getParameterized(List.class, type).getType();
             List<T> result = gson.fromJson(reader, listType);
-            System.out.println("DAO loaded " + (result != null ? result.size() : 0) + " items."); // הדפסת בקרה
+            System.out.println("DAO loaded " + (result != null ? result.size() : 0) + " items.");
             return result != null ? result : new ArrayList<>();
         } catch (IOException e) {
             System.err.println("CRITICAL: Could not find or read file at: " + filePath);

@@ -7,6 +7,13 @@ import com.hit.service.TicketService;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+Submitted by:
+Dana Mund, ID-319126074
+Loren Kricheli ID-322632183
+
+*/
+
 public class ControllerFactory {
     private Map<String, Object> controllers = new HashMap<>();
 
